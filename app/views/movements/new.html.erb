@@ -1,0 +1,26 @@
+<%= stylesheet_link_tag "movements", :media => "all" %>
+
+<body class="container">
+ <div class="con1">
+  <h1 class="my-5">3日間エコチャレンジ！</h1>
+  <p class="font-weight-bold">次の選択肢からやってみたい活動を1つ選択してください。</p>
+  <p class="font-weight-bold">チャレンジ終了後、選択した活動のCO2削減量が累計値に加算されます。</p>
+  <br>
+  <%= form_with(model: @movement, local: true) do |form| %>
+    <% @three_days_challenges.each do |t| %>
+      <%= form.radio_button :three_days_challenge_id, t.id, class: "my-3" %>
+      <%= form.label t.id, value: t.name %>
+      <br>
+      <br>
+    <% end %>
+    <%= form.submit "チャレンジ開始！", class: 'btn btn-success' %>
+  <% end %>
+    <br>
+    <br>
+  <footer class="con2">
+    出典
+    <p>岐阜市公式HP (1年間で削減できるCO2の量の考え方より)</p>
+    <p>JCCCA (電気の使われ方より)</p>
+  </footer>
+ </div>
+</body>

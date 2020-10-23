@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag "movements", :media => "all" %>
+
+<body class="container">
+  <h1 class="mt-5">3日間エコチャレンジ経過時間</h1><br>
+
+  <% if @movement.present? %>
+   <h4 class="font-weight-bold"><%= @time.strftime("%d日 %H時間 %M分 %S秒") %>経過</h4><br>
+   <p class="font-weight-bold">チャレンジ開始から3日後に終了！</p><br>
+   <h4 class="font-weight-bold"><%= @movement.three_days_challenge.name %></h4><br>
+  <% else %>
+   <h4 class="font-weight-bold">チャレンジ開始後に経過時間が表示されます。</h4><br>
+  <% end %>
+
+  <%= link_to "マイページへ戻る", user_path(current_user) %>
+</body>
