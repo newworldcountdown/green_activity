@@ -3,10 +3,7 @@
 class MovementsController < ApplicationController
   def show
     @movement = current_user.movements.last
-
-    if @movement.present?
-      @time = Time.zone.at(Time.current - @movement.created_at)
-    end
+    @movement.present? ? @time = Time.zone.at(Time.current - @movement.created_at) : Time.zone.at(0)
   end
 
   def new
@@ -21,7 +18,7 @@ class MovementsController < ApplicationController
     if @movement.save
       redirect_to action: :show
     else
-      render :new
+      redirect_to action: :new
     end
   end
 
@@ -36,6 +33,8 @@ class MovementsController < ApplicationController
     @movement = current_user.movements.last
     if @movement.destroy
       redirect_to user_path(current_user)
+    else
+      redirect_to action: :show
     end
   end
 
