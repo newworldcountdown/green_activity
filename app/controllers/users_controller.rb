@@ -4,26 +4,20 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @time = Movement.time_change(@user)
-    # @time = Time.at(0)
 
-    if @user.reduction_amount >= @user.number && Time.at(0) == @time
+    if @user.reduction_amount >= @user.number && Time.zone.at(0) == @time
       flash.now[:congrats] = 'おめでとうございます！'
     end
-
-    if Time.at(20) <= @time
-      flash.now[:awe_some] = 'お疲れ様でした！'
-    # elsif Time.zone.at(30000) < @time
-    #   @user.amount_change_time_passed
-    #   redirect_to movements_destroy_path
-    # && Time.zone.at(30000) > @time
-    end
+    # 259200
+    Time.zone.at(20) <= @time ? flash.now[:awe_some] = 'お疲れ様でした！' : nil
   end
 
   def amount_change_success
     @user = current_user
     @movement = current_user.movements.last
-    if current_user.update(reduction_amount: @user.reduction_amount + @movement.three_days_challenge.reduction_point,
-                           number: @user.number + 1000, challenge_counter: @user.challenge_counter + 1)
+    @amount = User.total_amount(@user, @movement)
+
+    if @amount.present?
       redirect_to movements_success_path
     else
       redirect_to action: :show

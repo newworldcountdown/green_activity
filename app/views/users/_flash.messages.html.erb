@@ -1,11 +1,9 @@
 <% if flash[:congrats] %>
 <div class="alert alert-success">
   <p class="font-weight-bold"><%= flash[:congrats] %></p>
-  <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
   <p class="font-weight-bold"><%= current_user.name %>さんは累計CO2削減量約<%= @user.reduction_amount %>グラムを達成しました！</p>
   <p class="font-weight-bold">3日間だけより多くのCO2を削減できる活動に参加してみませんか？</p>
   <%= link_to "参加してみる！",new_movements_path %><br>
   <br>
-  <p>※エコチャレンジ開始後メッセージは自動的に消滅します。</p>
 </div>
 <% end %>
