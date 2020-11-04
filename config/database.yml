@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: green_activity_production
-  username: green_activity
-  password: <%= ENV['GREEN_ACTIVITY_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
