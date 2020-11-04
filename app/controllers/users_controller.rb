@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+
   def show
     @user = current_user
     @time = Movement.time_change(@user)
@@ -10,6 +11,18 @@ class UsersController < ApplicationController
     end
     # 259200
     Time.zone.at(20) <= @time ? flash.now[:awe_some] = 'お疲れ様でした！' : nil
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    if current_user.update(user_params)
+     redirect_to action: :show
+    else
+     redirect_to action: :edit
+    end
   end
 
   def amount_change_success
@@ -30,5 +43,11 @@ class UsersController < ApplicationController
     else
       redirect_to action: :show
     end
+  end
+
+private
+
+  def user_params
+     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
