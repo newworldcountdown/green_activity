@@ -8,9 +8,8 @@ class BagsController < ApplicationController
   def create
     @bag = Bag.new(bag_params)
     @bag.user_id = current_user.id
-
     if @bag.save
-      @bag.amount_transfer
+      User.amount_transfer(current_user, @bag)
       render 'result'
     else
       render :new
@@ -20,6 +19,6 @@ class BagsController < ApplicationController
   private
 
     def bag_params
-      params.require(:bag).permit(:counter)
+      params.require(:bag).permit!
     end
 end

@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class MovementsController < ApplicationController
+  before_action :set_movement, only: %i[show success destroy]
+
   def show
-    @movement = current_user.movements.last
     @movement.present? ? @time = Time.zone.at(Time.current - @movement.created_at) : Time.zone.at(0)
   end
 
@@ -23,14 +24,12 @@ class MovementsController < ApplicationController
   end
 
   def success
-    @movement = current_user.movements.last
     @point = @movement.three_days_challenge.reduction_point
   end
 
   def failed; end
 
   def destroy
-    @movement = current_user.movements.last
     if @movement.destroy
       redirect_to user_path(current_user)
     else
@@ -39,6 +38,10 @@ class MovementsController < ApplicationController
   end
 
   private
+
+    def set_movement
+      @movement = current_user.movements.last
+    end
 
     def movement_params
       params.require(:movement).permit(:three_days_challenge_id)

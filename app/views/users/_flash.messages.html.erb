@@ -4,6 +4,6 @@
   <p class="font-weight-bold"><%= current_user.name %>さんは累計CO2削減量約<%= @user.reduction_amount %>グラムを達成しました！</p>
   <p class="font-weight-bold">3日間だけより多くのCO2を削減できる活動に参加してみませんか？</p>
   <%= link_to "参加してみる！",new_movements_path %><br>
-  <br>
-</div>
+<% elsif flash[:update_notice] %>
+  <p class="alert alert-success"><%= flash[:update_notice] %></p>
 <% end %>

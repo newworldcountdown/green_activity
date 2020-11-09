@@ -3,9 +3,24 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .container{
   text-align: center;
+  margin-top: 150px;
 }
 .inner{
   margin-top: 30px;
   margin-bottom: 40px;
   padding-left: 20px;
+}
+.col-md-12{
+  margin-bottom: 40px;
+}
+.menu-icon{
+  color: green;
+  font-weight: bold;
+  margin: 60px;
+}
+.navbar-brand{
+  font-size: 20px;
+}
+.nav-item {
+  padding-top: 10px;
 }

@@ -1,22 +1,23 @@
 <%= stylesheet_link_tag "bags", :media => "all" %>
 
 <body class="container">
-<h2 class="mt-5"><%=current_user.name%>さんは今日何回エコバッグを利用しましたか？</h2>
+<h1 class="col-md-12"><%=current_user.name%>さんは今日何回エコバッグを利用しましたか？</h1>
 
 <div class= "my-5">
-<svg width="5em" height="5em" viewBox="0 0 16 16" class="btn btn-success"  fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
+<svg width="5em" height="5em" viewBox="0 0 16 16"  fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
   <path fill-rule="evenodd" d="M10.243 1.071a.5.5 0 0 1 .686.172l3 5a.5.5 0 1 1-.858.514l-3-5a.5.5 0 0 1 .172-.686zm-4.486 0a.5.5 0 0 0-.686.172l-3 5a.5.5 0 1 0 .858.514l3-5a.5.5 0 0 0-.172-.686z"/>
   <path fill-rule="evenodd" d="M1 7v1h14V7H1zM.5 6a.5.5 0 0 0-.5.5v2a.5.5 0 0 0 .5.5h15a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5H.5z"/>
   <path fill-rule="evenodd" d="M14 9H2v5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V9zM2 8a1 1 0 0 0-1 1v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9a1 1 0 0 0-1-1H2z"/>
   <path fill-rule="evenodd" d="M4 10a.5.5 0 0 1 .5.5v3a.5.5 0 1 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 1 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 1 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 1 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 1 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
-</svg><br>
-右のカーソルを押して数字を入力してください。<br>
-1回押すと40グラム、2回押すと80グラムの様に空白の中にエコバックを利用した回数分のCO2削減量が表示されます。<br>
-入力後、送信ボタンを押してください。
+</svg>
+<br>
+<br>
+1日の間に利用したエコバックの回数を入力後、送信ボタンを押してください。<br>
+送信完了後、エコバックを利用した回数分のCO2削減量が表示されます。
 </div>
 
 <%= form_with(model: @bag, local: true) do |form| %>
-  <%= form.number_field :counter, step: "40", min: 40, class: "mr-3" %>
+  <%= form.number_field :counter, min: 1, class: "mr-3" %>
   <%= form.submit "送信！", class: "btn btn-success" %>
 <% end %><br>
 ※エコバック1回の利用で約40gのCO2削減に相当します。<br>
