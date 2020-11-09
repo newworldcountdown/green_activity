@@ -19,6 +19,6 @@ class BagsController < ApplicationController
   private
 
     def bag_params
-      params.require(:bag).permit!
+      params.require(:bag).permit(:counter)
     end
 end
