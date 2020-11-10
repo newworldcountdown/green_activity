@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       flash.now[:congrats] = 'おめでとうございます！'
     end
     # 259200
-    Time.zone.at(259_200) <= @time ? flash.now[:awe_some] = 'お疲れ様でした！' : nil
+    Time.zone.at(20) <= @time ? flash.now[:awe_some] = 'お疲れ様でした！' : nil
   end
 
   def edit; end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       bypass_sign_in(@user)
-      flash[:update_notice] = 'アップデート成功しました。'
+      flash[:update_notice] = 'アップデートに成功しました。'
       redirect_to action: :show
     else
       render :edit
