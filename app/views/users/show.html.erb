@@ -9,22 +9,23 @@
     <ul class="navbar-nav">
       <li class="nav-item"><p class="nav-link"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "menu-icon" %></p></li>
       <li class="nav-item"><p class="nav-link"><%= link_to "プロフィール編集", edit_user_path, class: "menu-icon" %></p></li>
-      <li class="nav-item"><p class="nav-link"><%= link_to "エコ活動（1日のエコバッグの使用回数を入力)", new_bags_path, class: "menu-icon" %></p></li>
+      <li class="nav-item"><p class="nav-link"><%= link_to "エコ活動（エコバッグの使用回数を入力)", new_bags_path, class: "menu-icon" %></p></li>
       <li class="nav-item"><p class="nav-link"><%= link_to "3日間エコチャレンジ経過時間", movements_path, class: "menu-icon" %></p></li>
     </ul>
   </div>
 </nav>
 
 <body class="container">
-  <h1 class="col-md-12"><%= current_user.name %>さん、こんにちは！</h1>
+  <%= render "users/update_action" %>
+  <%= render "users/flash.messages" %>
+  <%= render "movements/three_days_action" %>
+  <h1 class="col-md-12"><%= current_user.name %>さん、<br>こんにちは！</h1>
   <p>エコバックの利用と3日間エコチャレンジ(累計CO2削減量1000グラムを達成した後に利用できます)に積極的に参加して、どんどんCO2を削減していきましょう！</p>
   <p>1日の中でエコバックをご利用いただきましたら、上部のエコ活動のリンク(もしくはメニューバー)をクリックしてエコバックの使用回数を入力してください。</p>
   <h4 class="mt-5">累計CO2削減量</h4>　
   <p class="font-weight-bold">約<%= @user.reduction_amount %>グラム</p><br>
   <p class="font-weight-bold">CO2を<%= @user.number %>グラム削減すると3日間エコチャレンジに挑戦できます。</p><br>
   <p class="font-weight-bold">3日間エコチャレンジ成功<%= @user.challenge_counter %>回</p><br>
-  <%= render "users/flash.messages" %><br>
-  <%= render "movements/three_days_action" %>
-  ※累計CO2削減量約14000グラムで杉の木1本の年間CO2吸収量に相当します。<br>
-  出典：私の森.jp (森はCO2をどれくらい吸収する？より)
+  <p>※累計CO2削減量約14000グラムで杉の木1本の年間CO2吸収量に相当します。</p>
+  <p>出典<br>私の森.jp (森はCO2をどれくらい吸収する？)</p>
 </body>
