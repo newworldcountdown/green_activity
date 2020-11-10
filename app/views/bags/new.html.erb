@@ -12,15 +12,17 @@
     </svg>
     <br>
     <br>
-    1日の間に利用したエコバックの回数を入力後、送信ボタンを押してください。<br>
-    送信完了後、エコバックを利用した回数分のCO2削減量が表示されます。
+    1日の間に利用したエコバックの回数を入力後、送信ボタンを押してください。<br> 送信完了後、エコバックを利用した回数分のCO2削減量が表示されます。
   </div>
 
   <%= form_with(model: @bag, local: true) do |form| %>
     <%= form.number_field :counter, min: 1, class: "mr-3" %>
     <%= form.submit "送信！", class: "btn btn-success" %>
   <% end %><br>
-  <p>※エコバック1回の利用で約40gのCO2削減に相当します。</p><br>
-  <p>出典<br>埼玉県三芳町HP(お買い物はマイバッグで！)</p>
+  <p>※エコバック1回の利用で約40gのCO2削減に相当します。</p>
   <%= link_to "マイページへ戻る", user_path(current_user) %>
+  <br>
+  <br>
+  <p>出典<br>埼玉県三芳町HP(お買い物はマイバッグで！)</p>
+
 </body>
