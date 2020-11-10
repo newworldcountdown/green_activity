@@ -3,12 +3,12 @@
 <body class="container">
 
   <% if @movement.present? %>
-   <h1 class="mt-5"><%= @time.strftime("チャレンジ%-d日目です！") %></h1><br>
+   <h2 class="mt-5"><%= @time.strftime("チャレンジ%-d日目です！") %></h2><br>
    <h4 class="font-weight-bold"><%= @time.strftime("%H時間 %M分 %S秒経過") %></h4><br>
    <p class="font-weight-bold">3日間のチャレンジが終了しましたらマイページにてお知らせします。</p><br>
    <h4 class="font-weight-bold"><%= @movement.three_days_challenge.name %></h4><br>
   <% else %>
-   <h1 class="before-challenge">チャレンジ開始後に経過時間が表示されます。</h1><br>
+   <h2 class="before-challenge">チャレンジ開始後に経過時間が表示されます。</h2><br>
   <% end %>
   <br>
   <%= link_to "マイページへ戻る", user_path(current_user) %>
