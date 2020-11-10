@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag "movements", :media => "all" %>
 
 <body class="container">
-  <h2 class="mt-5">チャレンジ成功おめでとうございます！</h2>
+  <h2 class="mt-5">チャレンジ成功<br>おめでとうございます！</h2>
   <h3 class="my-5"><%= current_user.name %>さんはCO2を約<%= @point %>グラム削減しました！</h3>
   <h3 class="mb-5">この調子でどんどんCO2を減らしていきましょう！</h3>
   <%= link_to "マイページへ戻る", movements_destroy_path %>
