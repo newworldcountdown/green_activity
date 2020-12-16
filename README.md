@@ -1,24 +1,27 @@
 # Green Activity
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ユーザー自身がマイバックの利用などで削減したCO2の見える化を行い、
+環境への貢献度を分かりやすくして、環境に対する意識やモチベーションをあげるためのアプリケーションです。
+レスポンシブ対応を行い、外出先でもスマホ一つでマイバックの利用回数を入力できるようにしています。
+また、ある一定の累計C02削減量を超えると、3日間エコチャレンジという名目で3日間の間だけ普段とは違うエコ活動に参加できるような設計をしています。
 
-Things you may want to cover:
 
-* Ruby version
+* 使用技術
+・ruby  2.7.1
+・rails 6.0.3.2
+・mysql 8.0.22
+・AWS
+・Heroku
+・Rubocop
+・bootstrap
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* 実装機能
+ ・ユーザー登録機能、ログイン機能、編集機能(名前、email、パスワード)
+ 
+ ・投稿機能
+   エコバック利用回数入力機能
+   項目選択機能(3日間エコチャレンジ)
+   
+ ・経過時間表示機能
+ ・CO2累計値表示機能
+  
