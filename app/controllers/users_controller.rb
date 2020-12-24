@@ -2,11 +2,13 @@
 
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update]
+  #after_action :set_message, if: -> { @user.movements.last.present?}, only: %i[show]
 
   def show
     @user = current_user
-
     @time = Movement.time_change(@user)
+    @column_data = Bag.where(user_id:params[:id])
+    @total_bags = @column_data.sum(:counter)
 
     if @user.reduction_amount >= @user.number && Time.zone.at(0) == @time
       flash.now[:congrats] = 'おめでとうございます！'
@@ -52,6 +54,15 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
+
+    # def set_message
+    #   # @user = current_user
+    #   # @time = Movement.time_change(@user)
+    #   if @user.reduction_amount >= @user.number && Time.zone.at(20) > @time
+    #   flash.keep[:update_notice] = 'アップデートに成功しました。'
+    #   end
+    # end
+
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)

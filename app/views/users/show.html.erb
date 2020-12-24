@@ -23,9 +23,12 @@
   <p>エコバックの利用と3日間エコチャレンジ(累計CO2削減量1000グラムを達成した後に利用できます)に積極的に参加して、どんどんCO2を削減していきましょう！</p>
   <p>1日の中でエコバックをご利用いただきましたら、上部のリンク(もしくはメニューバー)をクリックしてエコバックの使用回数を入力してください。</p>
   <h4 class="mt-5">累計CO2削減量</h4>　
-  <p class="font-weight-bold">約<%= @user.reduction_amount %>グラム</p><br>
-  <p class="font-weight-bold">CO2を<%= @user.number %>グラム削減すると3日間エコチャレンジに挑戦できます。</p><br>
-  <p class="font-weight-bold">3日間エコチャレンジ成功<%= @user.challenge_counter %>回</p><br>
+  <p class="font-weight-bold">約<span style="color: #28a745;"><%= @user.reduction_amount %></span>グラム</p><br>
+  <p class="font-weight-bold">CO2を<span style="color: #28a745;"><%= @user.number %></span>グラム削減すると3日間エコチャレンジに挑戦できます。</p><br>
+  <p class="font-weight-bold">3日間エコチャレンジ成功<span style="color: #28a745;"><%= @user.challenge_counter %></span>回</p><br>
   <p>※累計CO2削減量約14000グラムで杉の木1本の年間CO2吸収量に相当します。</p>
-  <p>出典<br>私の森.jp (森はCO2をどれくらい吸収する？)</p>
+  <p>出典<br>私の森.jp (森はCO2をどれくらい吸収する？)</p><br>
+  <h4 class="mt-5"><%= current_user.name %>さんの週ごとのエコバック利用回数</h4><br>
+  <p class="font-weight-bold">累計利用数<span style="color: #28a745;"><%= @total_bags %></span>回</p><br>
+  <%= column_chart @column_data.group_by_week(:created_at, week_start: :monday, time_zone: "Tokyo").sum(:counter), colors: ["#28a745"] %>
 </body>

@@ -1,7 +1,6 @@
 <%= stylesheet_link_tag "movements", :media => "all" %>
 
 <body class="container">
-
   <% if @movement.present? %>
    <h2 class="mt-5"><%= @time.strftime("チャレンジ%-d日目です！") %></h2><br>
    <h4 class="font-weight-bold"><%= @time.strftime("%H時間 %M分 %S秒経過") %></h4><br>
